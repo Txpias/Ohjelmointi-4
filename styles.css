@@ -1,0 +1,150 @@
+body{
+    background-image: url('trivia.jpg');
+    background-size: cover; /* Venytä taustakuva koko näytön kokoiseksi */
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    justify-content: center; /* Vaakasuuntainen keskitys */
+    align-items: center; /* Pystysuuntainen keskitys */
+    height: 100vh; /* Vie koko näytön korkeus */
+    margin: 0px;
+    flex-direction: column;
+}
+
+h1{
+    color: hsl(27, 100%, 50%);
+    font-size: 50px;
+    font-family: 'Courier New', Courier, monospace;
+    margin-bottom: 30px;
+}
+h3{
+    color:whitesmoke;
+    font-size: 50px;
+    font-family: 'Courier New', Courier, monospace;
+    
+}
+
+label{
+    text-align: left;
+}
+
+#settings{
+    background-image: url('purple.jpg');
+    background-size:cover; /* Venytä taustakuva koko näytön kokoiseksi */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: rgb(241, 241, 241);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    width: 1000px;
+    height: 800px;
+    padding: 20px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    
+}
+
+.form-control{
+    width: 310px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    font-size: 20px;
+    margin: 5px;
+    text-align: left;
+}
+
+
+#questionCount:focus {
+    outline: none; 
+}
+
+#startGameButton{
+    background-color: hsl(276, 100%, 49%);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 30px;
+    color: white;
+    text-align: center;
+    height: 100px;
+    width: 300px;
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    margin: 10px;
+}
+
+
+#mainMenuBtn{
+    background-color: hsl(276, 100%, 49%);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 40px;
+    color: white;
+    text-align: center;
+    height: 100px;
+    width: 250px;
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+    margin-right: 1200px;
+    cursor: pointer;
+}
+#mainMenuBtn:hover{
+    background-color: hsl(27, 100%, 50%);
+}
+
+#mainMenuBtn:active{
+    background-color: hsl(27, 100%, 70%);;
+}
+
+#homepage{
+    background-image: url('purple.jpg');
+    background-size:cover; /* Venytä taustakuva koko näytön kokoiseksi */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: rgb(241, 241, 241);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 32px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    width: 1000px;
+    height: 800px;
+    padding: 20px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+#playbutton{
+    background-color: hsl(276, 100%, 49%);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 50px;
+    color: white;
+    text-align: center;
+    height: 100px;
+    width: 400px;
+    margin-top: 50px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+#playbutton:hover{
+    background-color: hsl(27, 100%, 50%);
+}
+
+#playbutton:active{
+    background-color: hsl(27, 100%, 70%);;
+}
+
+
+.hidden {
+    display: none;
+}
+.visible {
+    display: flex;
+}
