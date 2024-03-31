@@ -13,36 +13,65 @@ body{
 }
 
 h1{
-    color: hsl(27, 100%, 50%);
+    color: hsl(27, 80%, 60%);
     font-size: 50px;
     font-family: 'Courier New', Courier, monospace;
     margin-bottom: 30px;
 }
 h3{
     color:whitesmoke;
-    font-size: 50px;
+    font-size: 45px;
     font-family: 'Courier New', Courier, monospace;
+    padding-top: 30px;
     
 }
 
-label{
+label[for="trivia_difficulty"]{
     text-align: left;
+    margin-right: 85px;
+}
+label[for="trivia_category"]{
+    text-align: left;
+    margin-right: 110px;
+}
+label[for="trivia_type"]{
+    text-align: left;
+    margin-right: 160px;
+}
+label[for="trivia_amount"]{
+    text-align: left;
+    margin-left: 10px;
 }
 
+#gameScreen{
+    background-image: url('game.jpg');
+    background-size:auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: hsl(27, 100%, 50%);
+    width: 1050px;
+    height: 900px;
+    grid-template-columns: repeat(4,1fr);
+    text-align: center;
+    border: none;
+    border-radius: 20px;
+
+}
+
+
+
 #settings{
-    background-image: url('purple.jpg');
+    background-image: url('game.jpg');
     background-size:cover; /* Venytä taustakuva koko näytön kokoiseksi */
     background-position: center;
     background-repeat: no-repeat;
-    background-color: rgb(241, 241, 241);
     font-family: 'Courier New', Courier, monospace;
     font-size: 20px;
     color: white;
     font-weight: bold;
     text-align: center;
-    width: 1000px;
-    height: 800px;
-    padding: 20px;
+    width: 1050px;
+    height: 900px;
     border-radius: 20px;
     margin-bottom: 20px;
     
@@ -59,18 +88,14 @@ label{
 }
 
 
-#questionCount:focus {
-    outline: none; 
-}
-
 #startGameButton{
-    background-color: hsl(276, 100%, 49%);
+    background-color: hsl(276, 100%, 50%);
     font-family: 'Courier New', Courier, monospace;
     font-size: 30px;
     color: white;
     text-align: center;
     height: 100px;
-    width: 300px;
+    width: 330px;
     padding: 10px;
     border-radius: 20px;
     border: none;
@@ -78,31 +103,38 @@ label{
     margin: 10px;
 }
 
+#startGameButton:hover{
+    background-color: hsl(27, 100%, 60%);
+}
+
+#startGameButton:active{
+    background-color: hsl(27, 100%, 75%);
+}
 
 #mainMenuBtn{
-    background-color: hsl(276, 100%, 49%);
+    background-color: hsl(276, 100%, 50%);
     font-family: 'Courier New', Courier, monospace;
     font-size: 40px;
     color: white;
     text-align: center;
-    height: 100px;
+    height: 70px;
     width: 250px;
-    padding: 10px;
+    padding-bottom: 10px;
     border-radius: 20px;
     border: none;
     margin-right: 1200px;
+    margin-bottom: 30px;
     cursor: pointer;
 }
 #mainMenuBtn:hover{
-    background-color: hsl(27, 100%, 50%);
+    background-color: hsl(27, 100%, 60%);
 }
-
 #mainMenuBtn:active{
-    background-color: hsl(27, 100%, 70%);;
+    background-color: hsl(27, 100%, 75%);
 }
 
-#homepage{
-    background-image: url('purple.jpg');
+#mainMenu{
+    background-image: url('game.jpg');
     background-size:cover; /* Venytä taustakuva koko näytön kokoiseksi */
     background-position: center;
     background-repeat: no-repeat;
@@ -112,15 +144,14 @@ label{
     color: white;
     font-weight: bold;
     text-align: center;
-    width: 1000px;
-    height: 800px;
-    padding: 20px;
+    width: 1050px;
+    height: 900px;
     border-radius: 20px;
     margin-bottom: 20px;
 }
 
 #playbutton{
-    background-color: hsl(276, 100%, 49%);
+    background-color: hsl(276, 100%, 50%);
     font-family: 'Courier New', Courier, monospace;
     font-size: 50px;
     color: white;
@@ -134,11 +165,11 @@ label{
 }
 
 #playbutton:hover{
-    background-color: hsl(27, 100%, 50%);
+    background-color: hsl(27, 100%, 60%);
 }
 
 #playbutton:active{
-    background-color: hsl(27, 100%, 70%);;
+    background-color: hsl(27, 100%, 75%);;
 }
 
 

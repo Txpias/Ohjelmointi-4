@@ -10,10 +10,8 @@
 </head>
 
 <body>
-    <header>
-        <h1>Trivial Pursuit Online</h1>
-    </header>
-    <div id="homepage">
+    <div id="mainMenu">
+        <h1 id="title">Trivial Pursuit Online</h1>
         <h3>Welcome to Trivial Pursuit Online!</h3>
         <p>Challenge yourself with questions about your favorite categories.</p>
         <p>There are 3 different difficulty levels and you can choose one of them or mix them up.</p>
@@ -23,39 +21,13 @@
 
     <div id="settings" class="hidden">
         <button id="mainMenuBtn" onclick="backToMainMenu()">Main menu</button>
-        <h1>Settings</h1>
+        <h3>Settings</h3>
 
-        <!-- <form action="script.js">
-            <label for="questionCount">Number of questions 10-30:</label><br>
-            <input type="text" id="questionCount" name="questionCount" value="10"><br>
-            <label for="category">Select category:</label><br>
-            <select name="category" id="category">
-                <option value="Any">Any</option>
-                <option value="Horrro">Horror</option>
-                <option value="Horrro">Horror</option>
-            </select><br>
-            <label for="difficulty">Select difficulty:</label><br>
-            <select name="difficulty" id="difficulty">
-                <option value="Any">Any</option>
-                <option value="Easy">Easy</option>
-                <option value="Medium">Medium</option>
-                <option value="Hard">Hard</option>
-            </select><br>
-            <label for="type">Select type:</label><br>
-            <select name="type" id="type">
-                <option value="Any">Any</option>
-                <option value="Multiple">Multiple</option>
-                <option value="True/false">True/false</option>
-            </select><br>
-
-            <input id = "startGameButton" type="submit" value="Start the game!">
-
-        </form> -->
-        s
-        <form action="script.js">
+        <form id="triviaForm" action="script.js">
 
             <label for="trivia_amount">Number of Questions 10-50:</label><br>
-            <input type="number" name="trivia_amount" id="trivia_amount" class="form-control" min="10" max="30" value="10">
+            <input type="number" name="trivia_amount" id="trivia_amount" class="form-control" min="10" max="30"
+                value="10">
 
             <br>
 
@@ -69,7 +41,7 @@
 
 
             <br>
-            <label for="trivia_category">Select Category: </label><br>
+            <label for="trivia_category" id="label">Select Category: </label><br>
             <select name="trivia_category" class="form-control">
                 <option value="any">Any Category</option>
                 <option value="9">General Knowledge</option>
@@ -111,6 +83,14 @@
             <button id="startGameButton" type="submit">Start the game!</button>
         </form>
 
+
+    </div>
+
+
+    <div id="gameScreen" class="hidden">
+        <button id="mainMenuBtn" onclick="backToMainMenu()">Main menu</button>
+        <p>Täällä peli pyörii :DDD</p>
+        <button onclick="backToSettings()" style="color: black;">Back</button>
 
     </div>
 
