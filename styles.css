@@ -1,19 +1,14 @@
 body {
     background-image: url('trivia.jpg');
     background-size: cover;
-    /* Venytä taustakuva koko näytön kokoiseksi */
     background-position: center;
     background-repeat: no-repeat;
-
     display: flex;
     justify-content: center;
-    /* Vaakasuuntainen keskitys */
     align-items: center;
-    /* Pystysuuntainen keskitys */
     height: 100vh;
-    /* Vie koko näytön korkeus */
     margin: 0px;
-    /* flex-direction: column; */
+    font-family: Roboto,'Helvetica Neue',Arial,sans-serif;
 }
 
 h1 {
@@ -34,22 +29,22 @@ h3 {
 
 label[for="trivia_difficulty"] {
     text-align: left;
-    margin-right: 85px;
+    margin-right: 150px;
 }
 
 label[for="trivia_category"] {
     text-align: left;
-    margin-right: 110px;
+    margin-right: 150px;
 }
 
 label[for="trivia_type"] {
     text-align: left;
-    margin-right: 160px;
+    margin-right: 190px;
 }
 
 label[for="trivia_amount"] {
     text-align: left;
-    margin-left: 10px;
+    margin-right: 40px;
 }
 
 #gameScreen {
@@ -60,25 +55,24 @@ label[for="trivia_amount"] {
     width: 1050px;
     height: 900px;
     color: hsl(27, 100%, 50%);
-    font-family: 'Courier New', Courier, monospace;
     font-size: 20px;
     grid-template-columns: repeat(4);
     text-align: center;
     border: none;
     border-radius: 20px;
     margin-bottom: 20px;
+    padding: 10px;
 
 }
 
 #backToSettingsBtn {
     background-color: hsl(276, 100%, 50%);
-    font-family: 'Courier New', Courier, monospace;
     font-size: 40px;
+    font-weight: bold;
     color: white;
     text-align: center;
     height: 70px;
     width: 250px;
-    padding-bottom: 10px;
     border-radius: 20px;
     border: none;
     margin-bottom: 30px;
@@ -93,6 +87,22 @@ label[for="trivia_amount"] {
     background-color: hsl(27, 100%, 75%);
 }
 
+.navBtns {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+
+}
+
+.scoreBoard{
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    font-size: 32px;
+    padding: 40px 60px 0px 60px;
+    margin-top: 20px;
+}
+
 #settings {
     background-image: url('game.jpg');
     background-size: cover;
@@ -101,12 +111,12 @@ label[for="trivia_amount"] {
     width: 1050px;
     height: 900px;
     color: white;
-    font-family: 'Courier New', Courier, monospace;
     font-size: 20px;
     font-weight: bold;
     text-align: center;
     border-radius: 20px;
     margin-bottom: 20px;
+    padding: 10px;
     overflow: hidden;
 
 }
@@ -121,25 +131,18 @@ label[for="trivia_amount"] {
     text-align: left;
 }
 
-.navBtns {
-    display: flex;
-    justify-content: space-between;
-
-}
 
 
 #mainMenuBtn {
     background-color: hsl(276, 100%, 50%);
-    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
     font-size: 40px;
     color: white;
     text-align: center;
     height: 70px;
     width: 250px;
-    padding-bottom: 10px;
     border-radius: 20px;
     border: none;
-    margin-bottom: 30px;
     cursor: pointer;
 }
 
@@ -158,20 +161,21 @@ label[for="trivia_amount"] {
     background-repeat: no-repeat;
     background-color: rgb(241, 241, 241);
     font-family: 'Courier New', Courier, monospace;
-    font-size: 32px;
+    font-size: 30px;
     color: white;
     font-weight: bold;
     text-align: center;
     width: 1050px;
     height: 900px;
+    padding: 10px;
     border-radius: 20px;
     margin-bottom: 20px;
 }
 
 #startGameButton {
     background-color: hsl(276, 100%, 50%);
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 32px;
+    font-size: 38px;
+    font-weight: bold;
     color: white;
     text-align: center;
     height: 100px;
@@ -195,8 +199,8 @@ label[for="trivia_amount"] {
 
 #playbutton {
     background-image: linear-gradient(to right, hsl(276, 100%, 50%), hsl(27, 100%, 60%));
-    font-family: 'Courier New', Courier, monospace;
     font-size: 50px;
+    font-weight: bold;
     color: white;
     text-align: center;
     height: 100px;
