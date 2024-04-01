@@ -1,8 +1,6 @@
 let trivialData;
 
 
-
-
 function openSettings(){
     document.getElementById('mainMenu').classList.add('hidden');
     document.getElementById('settings').classList.remove('hidden');
