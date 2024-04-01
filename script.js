@@ -23,7 +23,6 @@ function backToSettings(){
     document.getElementById('gameScreen').classList.add('hidden');
     openSettings();
     trivialData = null;
-    console.log(trivialData);
 }
 
 document.addEventListener('DOMContentLoaded', function() {

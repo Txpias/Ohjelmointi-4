@@ -1,117 +1,76 @@
-body{
+body {
     background-image: url('trivia.jpg');
-    background-size: cover; /* Venytä taustakuva koko näytön kokoiseksi */
+    background-size: cover;
+    /* Venytä taustakuva koko näytön kokoiseksi */
     background-position: center;
     background-repeat: no-repeat;
 
     display: flex;
-    justify-content: center; /* Vaakasuuntainen keskitys */
-    align-items: center; /* Pystysuuntainen keskitys */
-    height: 100vh; /* Vie koko näytön korkeus */
+    justify-content: center;
+    /* Vaakasuuntainen keskitys */
+    align-items: center;
+    /* Pystysuuntainen keskitys */
+    height: 100vh;
+    /* Vie koko näytön korkeus */
     margin: 0px;
-    flex-direction: column;
+    /* flex-direction: column; */
 }
 
-h1{
-    color: hsl(27, 80%, 60%);
+h1 {
+    background-image: linear-gradient(to right, hsl(276, 100%, 50%), hsl(27, 100%, 60%));
+    color: white;
     font-size: 50px;
     font-family: 'Courier New', Courier, monospace;
     margin-bottom: 30px;
 }
-h3{
-    color:whitesmoke;
+
+h3 {
+    color: whitesmoke;
     font-size: 45px;
     font-family: 'Courier New', Courier, monospace;
     padding-top: 30px;
-    
+
 }
 
-label[for="trivia_difficulty"]{
+label[for="trivia_difficulty"] {
     text-align: left;
     margin-right: 85px;
 }
-label[for="trivia_category"]{
+
+label[for="trivia_category"] {
     text-align: left;
     margin-right: 110px;
 }
-label[for="trivia_type"]{
+
+label[for="trivia_type"] {
     text-align: left;
     margin-right: 160px;
 }
-label[for="trivia_amount"]{
+
+label[for="trivia_amount"] {
     text-align: left;
     margin-left: 10px;
 }
 
-#gameScreen{
+#gameScreen {
     background-image: url('game.jpg');
-    background-size:auto;
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    color: hsl(27, 100%, 50%);
     width: 1050px;
     height: 900px;
-    grid-template-columns: repeat(4,1fr);
-    text-align: center;
-    border: none;
-    border-radius: 20px;
-
-}
-
-
-
-#settings{
-    background-image: url('game.jpg');
-    background-size:cover; /* Venytä taustakuva koko näytön kokoiseksi */
-    background-position: center;
-    background-repeat: no-repeat;
+    color: hsl(27, 100%, 50%);
     font-family: 'Courier New', Courier, monospace;
     font-size: 20px;
-    color: white;
-    font-weight: bold;
+    grid-template-columns: repeat(4);
     text-align: center;
-    width: 1050px;
-    height: 900px;
+    border: none;
     border-radius: 20px;
     margin-bottom: 20px;
-    
+
 }
 
-.form-control{
-    width: 310px;
-    height: 30px;
-    border-radius: 5px;
-    border: none;
-    font-size: 20px;
-    margin: 5px;
-    text-align: left;
-}
-
-
-#startGameButton{
-    background-color: hsl(276, 100%, 50%);
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 30px;
-    color: white;
-    text-align: center;
-    height: 100px;
-    width: 330px;
-    padding: 10px;
-    border-radius: 20px;
-    border: none;
-    cursor: pointer;
-    margin: 10px;
-}
-
-#startGameButton:hover{
-    background-color: hsl(27, 100%, 60%);
-}
-
-#startGameButton:active{
-    background-color: hsl(27, 100%, 75%);
-}
-
-#mainMenuBtn{
+#backToSettingsBtn {
     background-color: hsl(276, 100%, 50%);
     font-family: 'Courier New', Courier, monospace;
     font-size: 40px;
@@ -122,20 +81,79 @@ label[for="trivia_amount"]{
     padding-bottom: 10px;
     border-radius: 20px;
     border: none;
-    margin-right: 1200px;
     margin-bottom: 30px;
     cursor: pointer;
 }
-#mainMenuBtn:hover{
+
+#backToSettingsBtn:hover{
     background-color: hsl(27, 100%, 60%);
-}
-#mainMenuBtn:active{
+} 
+
+#backToSettingsBtn:active{
     background-color: hsl(27, 100%, 75%);
 }
 
-#mainMenu{
+#settings {
     background-image: url('game.jpg');
-    background-size:cover; /* Venytä taustakuva koko näytön kokoiseksi */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 1050px;
+    height: 900px;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    overflow: hidden;
+
+}
+
+.form-control {
+    width: 310px;
+    height: 30px;
+    border-radius: 5px;
+    border: solid 1px hsl(276, 100%, 50%);
+    font-size: 20px;
+    margin: 5px;
+    text-align: left;
+}
+
+.navBtns {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+
+#mainMenuBtn {
+    background-color: hsl(276, 100%, 50%);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 40px;
+    color: white;
+    text-align: center;
+    height: 70px;
+    width: 250px;
+    padding-bottom: 10px;
+    border-radius: 20px;
+    border: none;
+    margin-bottom: 30px;
+    cursor: pointer;
+}
+
+#mainMenuBtn:hover {
+    background-color: hsl(27, 100%, 60%);
+}
+
+#mainMenuBtn:active {
+    background-color: hsl(27, 100%, 75%);
+}
+
+#mainMenu {
+    background-image: url('game.jpg');
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-color: rgb(241, 241, 241);
@@ -150,8 +168,33 @@ label[for="trivia_amount"]{
     margin-bottom: 20px;
 }
 
-#playbutton{
+#startGameButton {
     background-color: hsl(276, 100%, 50%);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 32px;
+    color: white;
+    text-align: center;
+    height: 100px;
+    width: 330px;
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    margin: 10px;
+}
+
+#startGameButton:hover {
+    background-image: none;
+    background-color: hsl(27, 100%, 60%);
+}
+
+#startGameButton:active {
+    background-color: hsl(27, 100%, 75%);
+}
+
+
+#playbutton {
+    background-image: linear-gradient(to right, hsl(276, 100%, 50%), hsl(27, 100%, 60%));
     font-family: 'Courier New', Courier, monospace;
     font-size: 50px;
     color: white;
@@ -164,18 +207,20 @@ label[for="trivia_amount"]{
     cursor: pointer;
 }
 
-#playbutton:hover{
+#playbutton:hover {
     background-color: hsl(27, 100%, 60%);
 }
 
-#playbutton:active{
-    background-color: hsl(27, 100%, 75%);;
+#playbutton:active {
+    background-color: hsl(27, 100%, 75%);
+    ;
 }
 
 
 .hidden {
     display: none;
 }
+
 .visible {
     display: flex;
 }

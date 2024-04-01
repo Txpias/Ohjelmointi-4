@@ -20,7 +20,7 @@
     </div>
 
     <div id="settings" class="hidden">
-        <button id="mainMenuBtn" onclick="backToMainMenu()">Main menu</button>
+        <button id="mainMenuBtn" style="margin-right: 800px;" onclick="backToMainMenu()">Back</button>
         <h3>Settings</h3>
 
         <form id="triviaForm" action="script.js">
@@ -88,9 +88,12 @@
 
 
     <div id="gameScreen" class="hidden">
-        <button id="mainMenuBtn" onclick="backToMainMenu()">Main menu</button>
+        <div class="navBtns">
+            <button id ="backToSettingsBtn" onclick="backToSettings()">Back</button>
+            <button id="mainMenuBtn" onclick="backToMainMenu()">Main menu</button>
+        </div>
+
         <p>Täällä peli pyörii :DDD</p>
-        <button onclick="backToSettings()" style="color: black;">Back</button>
 
     </div>
 
