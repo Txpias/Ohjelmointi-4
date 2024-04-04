@@ -3,6 +3,9 @@ let score = 0;
 let question_count = 0;
 let question_delay;
 let question_amount;
+let difficulty;
+let category;
+let type;
 
 
 function openSettings() {
@@ -13,6 +16,7 @@ function openSettings() {
 function backToMainMenu() {
     document.getElementById('settings').classList.add('hidden');
     document.getElementById('gameScreen').classList.add('hidden');
+    document.getElementById('endScreen').classList.add('hidden');
     document.getElementById('mainMenu').classList.remove('hidden');
     clearTimeout(question_delay);
     question_count = 0;
@@ -37,18 +41,36 @@ function startGame() {
     nextQuestion();
 }
 
-function endGame(){
-    document.getElementById('gameScreen').classList.add('hidden');    
+function endGame() {
+    document.getElementById('gameScreen').classList.add('hidden');
+    document.getElementById('endScreen').classList.remove('hidden');
+    document.getElementById('endScore').innerHTML = 'Score: ' + score + '<br><br>' + scoreAnalysis();
+    trivial = null;
+
+}
+
+function scoreAnalysis() {
+    const succes = score / amount;
+    let feedBack = '';  
+    if (succes <= amount * 0.3){
+        feedBack = 'You got ' + succes * 100 + '% correct' + '<br>Did you even try :D'
+    }
+    return feedBack;
+
+}
+
+async function playAgain() {
+    trivialData = await fetchQuestionData(question_amount, difficulty, category, type);
+    question_count = 0;
+    score = 0;
+    document.getElementById('endScreen').classList.add('hidden');
+    startGame();
 }
 
 function nextQuestion() {
-    document.getElementById('question').innerHTML = getQuestion();
+    document.getElementById('question').innerHTML = trivialData.results[question_count].question;
     document.getElementById('questionCount').innerHTML = 'Question: ' + (question_count + 1) + '/' + amount;
     getAnswers();
-    question_count++;
-}
-function getQuestion() {
-    return trivialData.results[question_count].question;
 }
 
 function getAnswers() {
@@ -64,6 +86,7 @@ function getAnswers() {
     } else {
         answers = ["True", "False"];
     }
+
     for (let i = 0; i < buttonCount; i++) {
         const button = document.createElement('button');
 
@@ -72,8 +95,8 @@ function getAnswers() {
         button.classList.add('answerBtn')
 
         button.addEventListener('click', function () {
-            if (button.textContent === trivialData.results[question_count - 1].correct_answer) {
-                button.style.backgroundColor = '#008080';
+            if (button.textContent === trivialData.results[question_count].correct_answer) {
+                button.style.backgroundColor = 'hsl(187, 98%, 50%)';
                 score++;
                 document.getElementById('gameScore').innerHTML = 'Score: ' + score;
             } else {
@@ -82,13 +105,14 @@ function getAnswers() {
 
             //change all correct answers to green and incorrects to red
             buttons.forEach(btn => {
-                if (btn.textContent === trivialData.results[question_count - 1].correct_answer) {
-                    btn.style.backgroundColor = '#00CED1';
+                if (btn.textContent === trivialData.results[question_count].correct_answer) {
+                    btn.style.backgroundColor = 'hsl(187, 98%, 50%)';
                 } else {
                     btn.style.backgroundColor = "#FF69B4";
                 }
                 btn.disabled = true
             });
+            question_count++;
 
             //disable buttons for 3 seconds after answerBtn clicked
             question_delay = setTimeout(function () {
@@ -96,9 +120,9 @@ function getAnswers() {
                     btn.disabled = false
                     button.style.backgroundColor = '';
                 });
-                if (question_count < amount){
+                if (question_count < amount) {
                     nextQuestion();
-                }else{
+                } else {
                     endGame();
                 }
             }, 3000);
@@ -106,10 +130,6 @@ function getAnswers() {
         answerBtnContainer.appendChild(button);
         buttons.push(button);
     }
-}
-
-function checkAnswer() {
-
 }
 
 
@@ -120,11 +140,10 @@ document.addEventListener('DOMContentLoaded', function () {
         event.preventDefault();
 
         amount = document.getElementById('trivia_amount').value;
-        let difficulty = document.getElementsByName('trivia_difficulty')[0].value;
-        let category = document.getElementsByName('trivia_category')[0].value;
-        let type = document.getElementsByName('trivia_type')[0].value;
+        difficulty = document.getElementsByName('trivia_difficulty')[0].value;
+        category = document.getElementsByName('trivia_category')[0].value;
+        type = document.getElementsByName('trivia_type')[0].value;
         trivialData = await fetchQuestionData(amount, difficulty, category, type);
-        console.log(trivialData);
         startGame();
     });
 });

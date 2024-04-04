@@ -25,7 +25,7 @@
         <form id="triviaForm" action="script.js">
 
             <label for="trivia_amount">Number of Questions 10-50:</label><br>
-            <input type="number" name="trivia_amount" id="trivia_amount" class="form-control" min="10" max="50"
+            <input type="number" name="trivia_amount" id="trivia_amount" class="form-control" min="1" max="50"
                 value="10">
 
             <br>
@@ -87,21 +87,25 @@
 
     <div id="gameScreen" class="hidden">
         <div class="navBtns">
-            <button id ="backToSettingsBtn" onclick="backToSettings()">Back</button>
+            <button id="backToSettingsBtn" onclick="backToSettings()">Back</button>
             <button id="mainMenuBtn" onclick="backToMainMenu()">Main menu</button>
         </div>
-
         <div class="scoreBoard">
             <p id="questionCount"></p>
             <p id="gameScore"></p>
         </div>
-
         <h1 id="question"></h1>
-
         <div class="answerBtns"></div>
-
     </div>
     <script src="./script.js"></script>
+
+    <div id="endScreen" class="hidden">
+        <h3 style="margin-top: 150px;">Game ended!</h3>
+        <h3 id="endScore"></h3>
+        <h3 id="feedback"></h3>
+        <button id="playAgainBtn" onclick="playAgain()">Play again!</button>
+        <button id="mainMenuBtn" onclick="backToMainMenu()">Main menu</button>
+    </div>
 </body>
 
 </html>
