@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trivial Pursuit Online</title>
     <link rel="stylesheet" href="./styles.css">
-    <script src="./script.js"></script>
 </head>
 
 <body>
@@ -86,7 +85,6 @@
 
     </div>
 
-
     <div id="gameScreen" class="hidden">
         <div class="navBtns">
             <button id ="backToSettingsBtn" onclick="backToSettings()">Back</button>
@@ -94,18 +92,16 @@
         </div>
 
         <div class="scoreBoard">
-            <p>Question:1/50</p>
-            <p>Score: 0</p>
-
+            <p id="questionCount"></p>
+            <p id="gameScore"></p>
         </div>
 
-        <p>Täällä peli pyörii :DDDD</p>
+        <h1 id="question"></h1>
+
+        <div class="answerBtns"></div>
 
     </div>
-
-
-
-
+    <script src="./script.js"></script>
 </body>
 
 </html>

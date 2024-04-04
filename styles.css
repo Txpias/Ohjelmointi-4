@@ -11,7 +11,7 @@ body {
     font-family: Roboto,'Helvetica Neue',Arial,sans-serif;
 }
 
-h1 {
+#title{
     background-image: linear-gradient(to right, hsl(276, 100%, 50%), hsl(27, 100%, 60%));
     color: white;
     font-size: 50px;
@@ -24,6 +24,13 @@ h3 {
     font-size: 45px;
     font-family: 'Courier New', Courier, monospace;
     padding-top: 30px;
+
+}
+
+#question{
+    color: white;
+    font-size: 30px;
+    padding: 0px 30px 30px 30px;
 
 }
 
@@ -63,6 +70,32 @@ label[for="trivia_amount"] {
     margin-bottom: 20px;
     padding: 10px;
 
+}
+
+.answerBtns{
+    display: grid;
+    justify-content: center;
+    grid-template-rows: repeat(4, 1fr);
+}
+
+.answerBtn{
+    border-radius: 15px;
+    background-color: hsl(276, 100%, 50%);
+    color: white;
+    width: 500px;
+    height: 50px;
+    font-size: 24px;
+    font-family: Roboto,'Helvetica Neue',Arial,sans-serif;
+    border: 0.5px solid black;
+    text-align: left;
+}
+
+.answerBtn:hover{
+    background-color: hsl(276, 100%, 60%);
+}
+
+.answerBtn:active{
+    background-color: hsl(276, 100%, 70%);
 }
 
 #backToSettingsBtn {
