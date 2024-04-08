@@ -162,6 +162,8 @@ async function fetchQuestionData(amount, difficulty, category, type) {
     try {
         const response = await fetch(apiUrl);
         if (!response.ok) {
+            alert("There was error uploading questions, pls try again");
+            backToSettings()
             throw new Error('Network response was not ok');
         }
         const data = await response.json();
@@ -173,6 +175,8 @@ async function fetchQuestionData(amount, difficulty, category, type) {
 
         return data;
     } catch (error) {
+        alert("There was error uploading questions, pls try again");
+        backToSettings();
         console.error('There was a problem with the fetch operation:', error);
     }
 }
