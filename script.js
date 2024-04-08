@@ -36,7 +36,7 @@ function backToSettings() {
 function startGame() {
     document.getElementById('settings').classList.add('hidden');
     document.getElementById('gameScreen').classList.remove('hidden');
-    document.getElementById('questionCount').innerHTML = 'Question: ' + (question_count + 1) + '/' + amount;
+    document.getElementById('questionCount').innerHTML = 'Question: ' + (question_count + 1) + '/' + question_amount;
     document.getElementById('gameScore').innerHTML = 'Score: ' + score;
     try {
         nextQuestion();
@@ -51,17 +51,15 @@ function endGame() {
     document.getElementById('endScreen').classList.remove('hidden');
     document.getElementById('endScore').innerHTML = 'Score: ' + score + '<br><br>' + scoreAnalysis();
     trivial = null;
-
 }
 
 function scoreAnalysis() {
-    const succes = score / amount;
+    const succes = score / question_amount;
     let feedBack = '';  
-    if (succes <= amount * 0.3){
+    if (succes <= question_amount * 0.3){
         feedBack = 'You got ' + succes * 100 + '% correct' + '<br>Did you even try :D'
     }
     return feedBack;
-
 }
 
 async function playAgain() {
@@ -74,7 +72,7 @@ async function playAgain() {
 
 function nextQuestion() {
     document.getElementById('question').innerHTML = trivialData.results[question_count].question;
-    document.getElementById('questionCount').innerHTML = 'Question: ' + (question_count + 1) + '/' + amount;
+    document.getElementById('questionCount').innerHTML = 'Question: ' + (question_count + 1) + '/' + question_amount;
     getAnswers();
 }
 
@@ -125,7 +123,7 @@ function getAnswers() {
                     btn.disabled = false
                     button.style.backgroundColor = '';
                 });
-                if (question_count < amount) {
+                if (question_count < question_amount) {
                     nextQuestion();
                 } else {
                     endGame();
@@ -144,11 +142,11 @@ document.addEventListener('DOMContentLoaded', function () {
     form.addEventListener('submit', async function (event) {
         event.preventDefault();
 
-        amount = document.getElementById('trivia_amount').value;
+        question_amount = document.getElementById('trivia_amount').value;
         difficulty = document.getElementsByName('trivia_difficulty')[0].value;
         category = document.getElementsByName('trivia_category')[0].value;
         type = document.getElementsByName('trivia_type')[0].value;
-        trivialData = await fetchQuestionData(amount, difficulty, category, type);
+        trivialData = await fetchQuestionData(question_amount, difficulty, category, type);
         startGame();
     });
 });
