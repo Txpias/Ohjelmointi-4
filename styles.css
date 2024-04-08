@@ -238,10 +238,10 @@ label[for="trivia_amount"] {
     font-weight: bold;
     text-align: center;
     width: 1050px;
-    height: 900px;
+    height: 830px;
     padding: 10px;
     border-radius: 20px;
-    margin-bottom: 20px;
+    margin: 60px;
 }
 
 #startGameButton {
@@ -277,7 +277,7 @@ label[for="trivia_amount"] {
     text-align: center;
     height: 100px;
     width: 400px;
-    margin-top: 50px;
+    margin-top: 30px;
     border-radius: 20px;
     border: none;
     cursor: pointer;
