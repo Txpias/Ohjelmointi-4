@@ -54,10 +54,6 @@ label[for="trivia_amount"] {
     margin-right: 40px;
 }
 
-#feedback{
-    padding-top: 10px;
-}
-
 #endScreen{
     background-image: url('game.jpg');
     background-size: cover;
@@ -70,7 +66,7 @@ label[for="trivia_amount"] {
     border: none;
     border-radius: 20px;
     margin: 60px;
-    padding:10px;
+    padding:20px 10px 120px 10px;
 }
 
 #playAgainBtn{

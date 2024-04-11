@@ -6,6 +6,8 @@ let question_amount;
 let difficulty;
 let category;
 let type;
+let current_streak = 0;
+let streaks = [];
 
 
 function openSettings() {
@@ -21,6 +23,8 @@ function backToMainMenu() {
     clearTimeout(question_delay);
     question_count = 0;
     score = 0;
+    current_streak = 0;
+    streaks = [];
     trivialData = null;
 }
 
@@ -30,6 +34,8 @@ function backToSettings() {
     clearTimeout(question_delay);
     question_count = 0;
     score = 0;
+    current_streak = 0;
+    streaks = [];
     trivialData = null;
 }
 
@@ -37,27 +43,31 @@ function startGame() {
     document.getElementById('settings').classList.add('hidden');
     document.getElementById('gameScreen').classList.remove('hidden');
     document.getElementById('questionCount').innerHTML = 'Question: ' + (question_count + 1) + '/' + question_amount;
+    document.getElementById('streak').innerHTML = 'Streak: ' + current_streak;
     document.getElementById('gameScore').innerHTML = 'Score: ' + score;
-    try {
-        nextQuestion();
-    } catch (error) {
-        alert("There was an error uploading questions, pls try again");
-        backToSettings();
-    }
+    nextQuestion();
 }
 
 function endGame() {
     document.getElementById('gameScreen').classList.add('hidden');
     document.getElementById('endScreen').classList.remove('hidden');
-    document.getElementById('endScore').innerHTML = 'Score: ' + score + '<br><br>' + scoreAnalysis();
+    document.getElementById('endScore').innerHTML = 'Score: ' + score + '/' + question_amount +
+        '<br><br>Highest streak:' + (streaks.length === 0 ? 0 : (streaks.length === 1 ? streaks[0] : Math.max(...streaks)))
+        + '<br><br>' + scoreAnalysis();
     trivial = null;
 }
 
 function scoreAnalysis() {
     const succes = score / question_amount;
-    let feedBack = '';  
-    if (succes <= question_amount * 0.3){
-        feedBack = 'You got ' + succes * 100 + '% correct' + '<br>Did you even try :D'
+    let feedBack = '';
+    if (succes <= 0.25) {
+        feedBack = 'Did you even try :D';
+    } else if (succes <= 0.50) {
+        feedBack = 'Good effort, but you can do better!';
+    } else if (succes <= 0.75) {
+        feedBack = 'Well done! You did decently, but there is still potential for improvement';
+    } else {
+        feedBack = 'Excellent performance! You are a true trivia guru!';
     }
     return feedBack;
 }
@@ -66,8 +76,14 @@ async function playAgain() {
     trivialData = await fetchQuestionData(question_amount, difficulty, category, type);
     question_count = 0;
     score = 0;
+    current_streak = 0;
+    streaks = [];
     document.getElementById('endScreen').classList.add('hidden');
-    startGame();
+    if (trivialData === null) {
+        backToSettings();
+    } else {
+        startGame();
+    }
 }
 
 function nextQuestion() {
@@ -101,10 +117,17 @@ function getAnswers() {
             if (button.textContent === trivialData.results[question_count].correct_answer) {
                 button.style.backgroundColor = 'hsl(187, 98%, 50%)';
                 score++;
+                current_streak++;
                 document.getElementById('gameScore').innerHTML = 'Score: ' + score;
             } else {
                 button.style.backgroundColor = "#FF69B4";
+                if (current_streak > 0) {
+                    streaks.push(current_streak);
+                    current_streak = 0;
+                }
             }
+
+            document.getElementById('streak').innerHTML = 'Streak: ' + current_streak;
 
             //change all correct answers to green and incorrects to red
             buttons.forEach(btn => {
@@ -126,6 +149,9 @@ function getAnswers() {
                 if (question_count < question_amount) {
                     nextQuestion();
                 } else {
+                    if (current_streak > 0) {
+                        streaks.push(current_streak);
+                    }
                     endGame();
                 }
             }, 3000);
@@ -147,7 +173,11 @@ document.addEventListener('DOMContentLoaded', function () {
         category = document.getElementsByName('trivia_category')[0].value;
         type = document.getElementsByName('trivia_type')[0].value;
         trivialData = await fetchQuestionData(question_amount, difficulty, category, type);
-        startGame();
+        if (trivialData === null) {
+            backToSettings();
+        } else {
+            startGame();
+        }
     });
 });
 
@@ -168,6 +198,12 @@ async function fetchQuestionData(amount, difficulty, category, type) {
             throw new Error('Network response was not ok');
         }
         const data = await response.json();
+
+        if (data.response_code === 1) {
+            alert('There was not enough questions in the database with these settings unfortunately, pls change your settings')
+            return null;
+        }
+
         data.results.forEach(question => {
             question.question = decodeHTML(question.question);
             question.correct_answer = decodeHTML(question.correct_answer);
@@ -177,6 +213,8 @@ async function fetchQuestionData(amount, difficulty, category, type) {
         return data;
     } catch (error) {
         console.error('There was a problem with the fetch operation:', error);
+        alert("There was an error uploading questions, pls try again");
+        return null;
     }
 }
 
