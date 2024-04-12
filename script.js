@@ -169,13 +169,18 @@ document.addEventListener('DOMContentLoaded', function () {
         event.preventDefault();
 
         question_amount = document.getElementById('trivia_amount').value;
+        if (question_amount.length === 0){
+            alert('Please fill number of questions');
+            return;
+        }
         difficulty = document.getElementsByName('trivia_difficulty')[0].value;
         category = document.getElementsByName('trivia_category')[0].value;
         type = document.getElementsByName('trivia_type')[0].value;
         trivialData = await fetchQuestionData(question_amount, difficulty, category, type);
         if (trivialData === null) {
             backToSettings();
-        } else {
+        }
+        else {
             startGame();
         }
     });
