@@ -29,14 +29,16 @@ function backToMainMenu() {
 }
 
 function backToSettings() {
-    document.getElementById('gameScreen').classList.add('hidden');
-    openSettings();
-    clearTimeout(question_delay);
-    question_count = 0;
-    score = 0;
-    current_streak = 0;
-    streaks = [];
-    trivialData = null;
+    if (confirm('Are you sure you wanna go back to settings?')){
+        document.getElementById('gameScreen').classList.add('hidden');
+        openSettings();
+        clearTimeout(question_delay);
+        question_count = 0;
+        score = 0;
+        current_streak = 0;
+        streaks = [];
+        trivialData = null;
+    }
 }
 
 function startGame() {
