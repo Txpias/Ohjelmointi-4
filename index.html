@@ -15,11 +15,11 @@
         <p>Challenge yourself with questions about your favorite categories.</p>
         <p>There are 3 different difficulty levels and you can choose one of them or mix them up.</p>
         <p>You can choose if you want true/false questions, multiple choice or both! </p>
-        <button id="playbutton" onclick="openSettings()">Play!</button>
+        <button id="playbutton" onclick="openSettingsPage()">Play!</button>
     </div>
 
     <div id="settings" class="hidden">
-        <button id="mainMenuBtn" style="margin: 10px 800px 10px 10px;" onclick="backToMainMenu()">Back</button>
+        <button id="mainMenuBtn" style="margin: 10px 800px 10px 10px;" onclick="backToMainMenuPage()">Back</button>
         <h3>Settings</h3>
 
         <form id="triviaForm" action="script.js">
@@ -87,8 +87,8 @@
 
     <div id="gameScreen" class="hidden">
         <div class="navBtns">
-            <button id="backToSettingsBtn" onclick="backToSettings()">Back</button>
-            <button id="mainMenuBtn" onclick="backToMainMenu()">Main menu</button>
+            <button id="backToSettingsBtn" onclick="confirmAndReturnToSettings()">Back</button>
+            <button id="mainMenuBtn" onclick="confirmAndReturnToMainMenu()">Main menu</button>
         </div>
         <div class="scoreBoard">
             <p id="questionCount"></p>
@@ -105,7 +105,7 @@
         <h3 id="endScore"></h3>
         <h3 id="feedback"></h3>
         <button id="playAgainBtn" onclick="playAgain()">Play again!</button>
-        <button id="mainMenuBtn" onclick="backToMainMenu()">Main menu</button>
+        <button id="mainMenuBtn" onclick="backToMainMenuPage()">Main menu</button>
     </div>
 </body>
 

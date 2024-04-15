@@ -10,12 +10,12 @@ let current_streak = 0;
 let streaks = [];
 
 
-function openSettings() {
+function openSettingsPage() {
     document.getElementById('mainMenu').classList.add('hidden');
     document.getElementById('settings').classList.remove('hidden');
 }
 
-function backToMainMenu() {
+function backToMainMenuPage() {
     document.getElementById('settings').classList.add('hidden');
     document.getElementById('gameScreen').classList.add('hidden');
     document.getElementById('endScreen').classList.add('hidden');
@@ -28,16 +28,26 @@ function backToMainMenu() {
     trivialData = null;
 }
 
-function backToSettings() {
-    if (confirm('Are you sure you wanna go back to settings?')){
+function confirmAndReturnToMainMenu(){
+    if (confirm('Are you sure you wanna leave  the game?')){
+        backToMainMenuPage();
+    }
+}
+
+function resetGameAndOpenSettings() {
         document.getElementById('gameScreen').classList.add('hidden');
-        openSettings();
+        openSettingsPage();
         clearTimeout(question_delay);
         question_count = 0;
         score = 0;
         current_streak = 0;
         streaks = [];
         trivialData = null;
+}
+
+function confirmAndReturnToSettings(){
+    if (confirm('Are you sure you wanna go back to settings?')){
+        resetGameAndOpenSettings();
     }
 }
 
@@ -82,7 +92,7 @@ async function playAgain() {
     streaks = [];
     document.getElementById('endScreen').classList.add('hidden');
     if (trivialData === null) {
-        backToSettings();
+        resetGameAndOpenSettings();
     } else {
         startGame();
     }
@@ -180,7 +190,9 @@ document.addEventListener('DOMContentLoaded', function () {
         type = document.getElementsByName('trivia_type')[0].value;
         trivialData = await fetchQuestionData(question_amount, difficulty, category, type);
         if (trivialData === null) {
-            backToSettings();
+            alert('There was not enough questions in the database with these settings unfortunately, pls change your settings');
+        }else if (trivialData === -1){
+            alert("There was an error uploading questions, pls try again");
         }
         else {
             startGame();
@@ -207,7 +219,6 @@ async function fetchQuestionData(amount, difficulty, category, type) {
         const data = await response.json();
 
         if (data.response_code === 1) {
-            alert('There was not enough questions in the database with these settings unfortunately, pls change your settings')
             return null;
         }
 
@@ -220,8 +231,7 @@ async function fetchQuestionData(amount, difficulty, category, type) {
         return data;
     } catch (error) {
         console.error('There was a problem with the fetch operation:', error);
-        alert("There was an error uploading questions, pls try again");
-        return null;
+        return -1;
     }
 }
 
