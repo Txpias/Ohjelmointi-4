@@ -88,16 +88,17 @@ function scoreAnalysis() {
 
 async function playAgain() {
     trivialData = await fetchQuestionData(question_amount, difficulty, category, type);
+    if (trivialData === null || trivialData === -1) {
+        alert('There was an error getting new questions, pls try again');
+        return;
+    }
     question_count = 0;
     score = 0;
     current_streak = 0;
     streaks = [];
     document.getElementById('endScreen').classList.add('hidden');
-    if (trivialData === null) {
-        resetGameAndOpenSettings();
-    } else {
-        startGame();
-    }
+    startGame();
+    
 }
 
 function nextQuestion() {
