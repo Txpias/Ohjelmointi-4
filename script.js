@@ -8,6 +8,7 @@ let category;
 let type;
 let current_streak = 0;
 let streaks = [];
+const form = document.getElementById('triviaForm');
 
 
 function openSettingsPage() {
@@ -26,6 +27,7 @@ function backToMainMenuPage() {
     current_streak = 0;
     streaks = [];
     trivialData = null;
+    form.reset();
 }
 
 function confirmAndReturnToMainMenu(){
@@ -175,11 +177,8 @@ function getAnswers() {
 
 
 document.addEventListener('DOMContentLoaded', function () {
-    const form = document.getElementById('triviaForm');
-
     form.addEventListener('submit', async function (event) {
         event.preventDefault();
-
         question_amount = document.getElementById('trivia_amount').value;
         if (question_amount.length === 0){
             alert('Please fill number of questions');
