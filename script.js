@@ -10,12 +10,13 @@ let current_streak = 0;
 let streaks = [];
 const form = document.getElementById('triviaForm');
 
-
+//Open settings page
 function openSettingsPage() {
     document.getElementById('mainMenu').classList.add('hidden');
     document.getElementById('settings').classList.remove('hidden');
 }
 
+//Reset everything and go back to main menu page
 function backToMainMenuPage() {
     document.getElementById('settings').classList.add('hidden');
     document.getElementById('gameScreen').classList.add('hidden');
@@ -30,12 +31,15 @@ function backToMainMenuPage() {
     form.reset();
 }
 
+
+//Show popup and confirm that player really wants to leave the game
 function confirmAndReturnToMainMenu() {
     if (confirm('Are you sure you wanna leave  the game?')) {
         backToMainMenuPage();
     }
 }
 
+//Reset stats and questions and go back to settings page
 function resetGameAndOpenSettings() {
     document.getElementById('gameScreen').classList.add('hidden');
     openSettingsPage();
@@ -47,12 +51,14 @@ function resetGameAndOpenSettings() {
     trivialData = null;
 }
 
+//Show popup and confirm that player really wants to leave game and go back to settings
 function confirmAndReturnToSettings() {
     if (confirm('Are you sure you wanna go back to settings?')) {
         resetGameAndOpenSettings();
     }
 }
 
+//Start game
 function startGame() {
     document.getElementById('settings').classList.add('hidden');
     document.getElementById('gameScreen').classList.remove('hidden');
@@ -62,6 +68,7 @@ function startGame() {
     nextQuestion();
 }
 
+//Go to ending screen
 function endGame() {
     document.getElementById('gameScreen').classList.add('hidden');
     document.getElementById('endScreen').classList.remove('hidden');
@@ -71,6 +78,7 @@ function endGame() {
     trivial = null;
 }
 
+//Give feedback to player when game ends
 function scoreAnalysis() {
     const succes = score / question_amount;
     let feedBack = '';
@@ -86,6 +94,7 @@ function scoreAnalysis() {
     return feedBack;
 }
 
+//Reset stats and get new questions with same settings and start game again
 async function playAgain() {
     trivialData = await fetchQuestionData(question_amount, difficulty, category, type);
     if (trivialData === null || trivialData === -1) {
@@ -101,12 +110,14 @@ async function playAgain() {
 
 }
 
+//Get next question
 function nextQuestion() {
     document.getElementById('question').innerHTML = trivialData.results[question_count].question;
     document.getElementById('questionCount').innerHTML = 'Question: ' + (question_count + 1) + '/' + question_amount;
     getAnswers();
 }
 
+//Function gets answers from trivial data variable which is json object. Function creates answer buttons depending on question type. If multiple choice question there will be 4 buttons and else 2 buttons.
 function getAnswers() {
     const answerBtnContainer = document.querySelector('.answerBtns');
     answerBtnContainer.innerHTML = '';
@@ -176,7 +187,7 @@ function getAnswers() {
     }
 }
 
-
+//Listener for settings page
 document.addEventListener('DOMContentLoaded', function () {
     form.addEventListener('submit', async function (event) {
         event.preventDefault();
@@ -200,6 +211,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+//Get questions from the database
 async function fetchQuestionData(amount, difficulty, category, type) {
     let apiUrl = "https://opentdb.com/api.php?amount=".concat(amount);
     if (difficulty !== 'any') {
@@ -235,6 +247,7 @@ async function fetchQuestionData(amount, difficulty, category, type) {
     }
 }
 
+//helper function for fetchQuestionData: decodes html encoding
 function decodeHTML(html) {
     const txt = document.createElement('textarea');
     txt.innerHTML = html;
