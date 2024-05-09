@@ -30,25 +30,25 @@ function backToMainMenuPage() {
     form.reset();
 }
 
-function confirmAndReturnToMainMenu(){
-    if (confirm('Are you sure you wanna leave  the game?')){
+function confirmAndReturnToMainMenu() {
+    if (confirm('Are you sure you wanna leave  the game?')) {
         backToMainMenuPage();
     }
 }
 
 function resetGameAndOpenSettings() {
-        document.getElementById('gameScreen').classList.add('hidden');
-        openSettingsPage();
-        clearTimeout(question_delay);
-        question_count = 0;
-        score = 0;
-        current_streak = 0;
-        streaks = [];
-        trivialData = null;
+    document.getElementById('gameScreen').classList.add('hidden');
+    openSettingsPage();
+    clearTimeout(question_delay);
+    question_count = 0;
+    score = 0;
+    current_streak = 0;
+    streaks = [];
+    trivialData = null;
 }
 
-function confirmAndReturnToSettings(){
-    if (confirm('Are you sure you wanna go back to settings?')){
+function confirmAndReturnToSettings() {
+    if (confirm('Are you sure you wanna go back to settings?')) {
         resetGameAndOpenSettings();
     }
 }
@@ -98,7 +98,7 @@ async function playAgain() {
     streaks = [];
     document.getElementById('endScreen').classList.add('hidden');
     startGame();
-    
+
 }
 
 function nextQuestion() {
@@ -181,7 +181,7 @@ document.addEventListener('DOMContentLoaded', function () {
     form.addEventListener('submit', async function (event) {
         event.preventDefault();
         question_amount = document.getElementById('trivia_amount').value;
-        if (question_amount.length === 0){
+        if (question_amount.length === 0) {
             alert('Please fill number of questions');
             return;
         }
@@ -191,7 +191,7 @@ document.addEventListener('DOMContentLoaded', function () {
         trivialData = await fetchQuestionData(question_amount, difficulty, category, type);
         if (trivialData === null) {
             alert('There was not enough questions in the database with these settings unfortunately, pls change your settings');
-        }else if (trivialData === -1){
+        } else if (trivialData === -1) {
             alert("There was an error uploading questions, pls try again");
         }
         else {
